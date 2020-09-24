@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
@@ -49,18 +48,6 @@ class LanguageView extends StatelessWidget {
                 title: 'English',
                 subtitle: 'English',
                 locale: EasyLocalization.of(context).supportedLocales[0]),
-            buildDivider(),
-            buildSwitchListTileMenuItem(
-                context: context,
-                title: 'Dutch',
-                subtitle: 'Dutch',
-                locale: EasyLocalization.of(context).supportedLocales[2]),
-            buildDivider(),
-            buildSwitchListTileMenuItem(
-                context: context,
-                title: 'Русский',
-                subtitle: 'Русский',
-                locale: EasyLocalization.of(context).supportedLocales[3]),
             buildDivider(),
           ],
         ),

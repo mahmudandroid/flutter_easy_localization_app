@@ -13,30 +13,9 @@ void main() {
       supportedLocales: [
         Locale('en', 'US'),
         Locale('ar', 'DZ'),
-        Locale('de', 'DE'),
-        Locale('ru', 'RU')
       ],
       path: 'resources/langs/langs.csv',
-      //'resources/langs',
-      // fallbackLocale: Locale('en', 'US'),
-      // startLocale: Locale('de', 'DE'),
-      // saveLocale: false,
-      // useOnlyLangCode: true,
-      // preloaderColor: Colors.black,
-      // preloaderWidget: CustomPreloaderWidget(),
-
-      // optional assetLoader default used is RootBundleAssetLoader which uses flutter's assetloader
-      // install easy_localization_loader for enable custom loaders
-      // assetLoader: RootBundleAssetLoader()
-      // assetLoader: HttpAssetLoader()
-      // assetLoader: FileAssetLoader()
-      assetLoader: CsvAssetLoader()
-      // assetLoader: YamlAssetLoader() //multiple files
-      // assetLoader: YamlSingleAssetLoader() //single file
-      // assetLoader: XmlAssetLoader() //multiple files
-      // assetLoader: XmlSingleAssetLoader() //single file
-      // assetLoader: CodegenLoader()
-      ));
+      assetLoader: CsvAssetLoader()));
 }
 
 class MyApp extends StatelessWidget {
@@ -70,12 +49,6 @@ class _MyHomePageState extends State<MyHomePage> {
   int counter = 0;
   bool _gender = true;
 
-  void incrementCounter() {
-    setState(() {
-      counter++;
-    });
-  }
-
   void switchGender(bool val) {
     setState(() {
       _gender = val;
@@ -105,9 +78,6 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Spacer(
-              flex: 1,
-            ),
             Text(
               LocaleKeys.gender_with_arg,
               style: TextStyle(
@@ -115,13 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   fontSize: 19,
                   fontWeight: FontWeight.bold),
             ).tr(args: ['aissat'], gender: _gender ? 'female' : 'male'),
-            Text(
-              tr(LocaleKeys.gender, gender: _gender ? 'female' : 'male'),
-              style: TextStyle(
-                  color: Colors.grey.shade600,
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold),
-            ),
+
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -137,12 +101,6 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(LocaleKeys.msg_named)
                 .tr(namedArgs: {'lang': 'Dart'}, args: ['Easy localization']),
             Text(LocaleKeys.clicked).plural(counter),
-            FlatButton(
-              onPressed: () {
-                incrementCounter();
-              },
-              child: Text(LocaleKeys.clickMe).tr(),
-            ),
             SizedBox(
               height: 15,
             ),
@@ -168,10 +126,6 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: incrementCounter,
-        child: Text('+1'),
       ),
     );
   }
